@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>    
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined-for-cwd.min.css">
+    <link rel="stylesheet" href="css/style.css">
+   <title></title>
+     <style>
+            .contain{
+                width: 80%;
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+            article{
+                background-color: gray;
+                padding-left:10px;
+                padding-top: 10px;
+            }
+            .content
+            {
+                height:150px;
+                overflow: auto;
+                background-color: white;
+                width:98%;
+            }
+            
+            h4{
+                font-weight: bold;
+                color:gray;
+                @baseFontSize: 8px;
+            }
+
+            
+            .title{
+                font-weight: bold;
+                color:yellow;
+            }
+             p{
+                @baseFontSize: 8px;
+            }
+            ul{
+                list-style-type: none;
+                background-color: yellow;
+            }
+            li{
+                display:inline-block;
+            }
+            .lineMessage{
+                padding-right: 10px;
+            }
+            input[type="text"]{
+                width:60%;
+                height:20px;
+            }
+            
+        </style>
+</head>
+<body>
+    <div class="jumbotron"> 
+        <div class="container">
+            <nav>
+                <ul>
+                    <li>connect</li>
+                    <li>sign in</li>
+                    <li>New post</li>
+                </ul>
+            </nav>
+        
+            <!--input type="search" id ="search"-->
+            <section id="display">
+                
+            </section>
+        </div>
+    </div>
+    <script src="/vendor/js/jquery-2.1.1.min.js"></script>   
+    <script src="/vendor/js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
