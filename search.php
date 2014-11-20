@@ -21,9 +21,11 @@ function my_autoload($className)
 
 // Connection au serveur
 
-$db = new Helper_database();
-$posts=$db->queryAll("select * from posts order by created desc");
+//$db = new Helper_database();
+//$posts=$db->queryAll("select * from posts order by created desc");
 
+$post = new Model_Post();
+$posts=$post->getPosts(0,100);
 
 header('Content-type: application/json');  
 

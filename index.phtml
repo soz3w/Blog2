@@ -5,15 +5,29 @@
     <link rel="stylesheet" href="css/style.css">
    <title></title>
      <style>
+             
+             a:link {
+                color: white;
+            }
+
+            /* mouse over link */
+            a:hover {
+                color: #FF00FF;
+            }
+
+            /* selected link */
+            
             .contain{
                 width: 80%;
                 margin-left: 10%;
                 margin-right: 10%;
             }
             article{
-                background-color: gray;
+                background-color: rgba(200, 200, 200, 0.9);
                 padding-left:10px;
                 padding-top: 10px;
+                -webkit-border-radius: 10px 10px 10px 10px;
+                border-radius: 10px 10px 10px 10px;
             }
             .content
             {
@@ -39,10 +53,27 @@
             }
             ul{
                 list-style-type: none;
-                background-color: yellow;
+                padding-left: 0px;
+                margin-left: 0px;
             }
-            li{
-                display:inline-block;
+            nav li{
+                display: inline-block;
+                width: 80px;
+                text-align: center;
+                background-color: rgba(200, 200, 200, 0.9);
+                -webkit-border-radius: 10px 10px 10px 10px;
+                border-radius: 10px 10px 10px 10px;
+                margin-top: 40px;
+            }
+            section li{               
+                display: inline-block;
+                list-style: none;
+                padding-right: 3px;
+                margin-right: 1px;
+                width: 20px;
+                text-align: center;
+               
+                line-height: 25px;
             }
             .lineMessage{
                 padding-right: 10px;
@@ -51,25 +82,33 @@
                 width:60%;
                 height:20px;
             }
-            
+            .paginate_click
+            {
+                padding :5px;
+            }
+            .active{
+                color: red;
+            }            
         </style>
 </head>
 <body>
     <div class="jumbotron"> 
-        <div class="container">
+        
             <nav>
                 <ul>
-                    <li>connect</li>
-                    <li>sign in</li>
-                    <li>New post</li>
+                    <li><a class= "accueil"  onclick="return false;">Accueil</a></li>
+                    <li><a class= "admin"  onclick="return false;">Admin</a></li>
+                    <li><a class= "contact"  onclick="return false;">Contact</a></li>
                 </ul>
             </nav>
         
-            <!--input type="search" id ="search"-->
+            <div class="container">
+                
+            </div>
             <section id="display">
                 
             </section>
-        </div>
+        
     </div>
     <script src="/vendor/js/jquery-2.1.1.min.js"></script>   
     <script src="/vendor/js/bootstrap.min.js"></script>

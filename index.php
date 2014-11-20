@@ -40,4 +40,10 @@ if(!empty($_GET["supp"])){
 }
 */
 
+ // $post = new Model_Post();
+ // $posts=$post->getPosts(0,100);
+ // print_r($posts);
+
 include 'index.phtml';
+
+ //echo json_encode($posts);

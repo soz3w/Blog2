@@ -13,12 +13,17 @@ class Helper_database
 		$this->db->exec("SET NAMES UTF8");
 
 	}
-	public function query($queryString,$cond)
+	public function query($queryString)
 	{
 		$req=$this->db->prepare($queryString);
 
-		if (!$req->execute($cond))
-		    	print_r($db->errorInfo());	
+		if (!$req->execute())
+		    {
+		    	var_dump($this->db->errorInfo());
+		    	die();
+
+		    }
+		    		
 	
 		$result = $req->fetchAll(PDO::FETCH_ASSOC);
 		return $result;
@@ -38,7 +43,7 @@ class Helper_database
 		$req=$this->db->prepare($queryString);
 
 		if (!$req->execute($cond))
-		    	print_r($db->errorInfo());	
+		    	print_r($this->db->errorInfo());	
 	
 		$result = $req->fetch(PDO::FETCH_ASSOC);
 		return $result;
@@ -52,5 +57,80 @@ class Helper_database
 
 		   return $this->db->lastInsertId();
 	}
+
+	public function save($data,$table){
+		
+		if (isset($data["id"]) && !empty($data["id"])){
+			$sql="update ".$table." set ";
+			foreach($data as $k=>$v) {
+	           if($k!="id")
+		           {
+		           	$sql.="$k='$v',";
+		           }				
+			}
+			$sql=substr($sql,0,-1);
+			$sql.=" where id=".$data["id"];
+
+		}
+		else
+		{
+			$sql="insert into ".$table."(";
+			foreach($data as $k=>$v) {
+	           if($k!="id")
+		           {
+		           	$sql.="$k,";
+		           }				
+			}
+			  $sql=substr($sql,0,-1);
+			  $sql.=") values(";
+			 foreach($data as $k=>$v) {
+	           if($k!="id")
+		           {
+		           	$sql.="'$v',";
+		           }				
+			}
+			 $sql=substr($sql,0,-1);
+			
+			 $sql.=")";
+			
+		}
+			//echo $sql;
+			
+
+		    try { 
+        			$req=$this->db->prepare($sql);
+		   			 $req->execute();
+		    		//print_r($db->errorInfo());
+    			} 
+    		catch(PDOExecption $e) {         
+        		print "Error!: " . $e->getMessage() . "</br>"; 
+    		} 
+
+
+		    //cas insert
+		    if (!isset($data["id"]) || empty($data["id"])){
+				$this->id=$this->db->lastInsertId();
+		    }
+			else
+			{
+				$this->id=$data["id"];
+			}
+	}
+
+	function delete($id,$table){
+    	
+    	$sql="delete from ".$table." where id=$id";
+    	 try { 
+        			$req=$this->db->prepare($sql);
+		   			 $req->execute();
+		   			
+		   	  }
+    		catch(PDOExecption $e) {         
+        		print "Error!: " . $e->getMessage() . "</br>"; 
+        		
+    		} 
+
+
+    }
 	
 }
