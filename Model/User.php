@@ -7,17 +7,17 @@ class Model_User {
 	{
 		$this->db = new Helper_database();
 	}
-	public function getUser($login,$password)
+	public function authenf($login,$password)
 	{
 		$sql =  "select id,login, password";
-		$sql.=  " from user ";
+		$sql.=  " from users ";
 		$sql.= " where login = ? and password=?";
 		return $this->db->queryOne($sql, array($login,$password));
 	}
 	public function getUsers($limit1=0, $limit2=100)
 	{
 		$sql =  " select id,login, password";
-		$sql.=  " from user ";
+		$sql.=  " from users ";
 		$sql.= " limit $limit1,$limit2";
 		return $this->db->query($sql);
 	}
@@ -34,7 +34,8 @@ class Model_User {
 	public function delete($id)
 	{
 		$this->db->save($id,"users");
-	}	
+	}
+	
 }
 
 

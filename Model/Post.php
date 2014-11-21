@@ -9,7 +9,7 @@ class Model_Post {
 	}
 	public function getPost($id)
 	{
-		$sql =  " select title, content, categories.name, created,login ";
+		$sql =  " select title, content, categories.name, created,login,posts.id ";
 		$sql.=  " from posts inner join categories on posts.cat_id=categories.id ";
 		$sql.= " inner join users on posts.user_id= users.id where posts.id = ? order by created desc";
 		return $this->db->queryOne($sql, array($id));

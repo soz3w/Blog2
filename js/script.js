@@ -1,24 +1,32 @@
 
 $(function(){
 
- 		$("#display").load("getPosts.php", 
-			 			{'page':1}, 
-			 			function() {
-			 						$("#1-page").addClass('active');
-									setPagination();
-			 					}
-			 			);  //initial page number to load
+ 		loadHome();
 
     //$(".paginate_click").on( "click",function (e) {
    
    
-
+      
 
     	$(".admin").click(function(event){
-    									event.preventDefault();
-							    		$(".container").load("login.php", {}, function(){} );   	
+    									msg="";
+                      $("#display").html("");  
+                      checkLogin(msg);
+                      $("nav ul .active").removeClass('active');
+                      $(this).parent().addClass('active');
     								 }
     				);
+
+      $(".accueil").click(function(event){
+                      loadHome();
+                      $(".formulaire").html("");   
+                      $("nav ul .active").removeClass('active');
+                      $(this).parent().addClass('active'); 
+                     }
+            );
+      
+
+
 
 
 
@@ -28,7 +36,7 @@ $(function(){
 
 function setPagination() {
 
-   	  $("a").on("click", function (e) {
+   	  $(".paginate_click").on("click", function (e) {
        
        // $("#display").prepend('<div class="loading-indication"><img src="images/ajax-loader.gif" /> Loading...</div>');
         var linkClicked = $(this).attr("id");
@@ -51,8 +59,46 @@ function setPagination() {
 
    }
 
+function checkLogin(messageError)
+{
+  event.preventDefault();
+  $(".formulaire").load("login.php", {}, function(){
 
+            if (messageError!='')
+              $("#MessageError").html(messageError);
 
+          $(".btnLogin").click(function(event){
+                            logVal=$("#idLogin").val();
+                            passVal=$("#idPassword").val();
+                            $(".formulaire").html("");  
+                            $("#display").html("");  
+                            $("#display").load("getPostsList.php", 
+                              {login:logVal,password:passVal}, function(){} );
+                        }
+                      );    
+
+    }); 
+}
+
+function loadHome()
+{
+
+  $("#display").load("getPosts.php", 
+            {'page':0}, 
+            function() {
+                  $("#1-page").addClass('active');
+                  setPagination();
+                }
+            );  
+}
+function loadOnePost(idParam)
+{ 
+  $("#display").load("getPost.php", 
+            {id: idParam}, 
+            function() {}
+            );  
+
+}
 
 /*
 	var bouton = $("#ajout");

@@ -45,7 +45,7 @@ class Helper_database
 		if (!$req->execute($cond))
 		    	print_r($this->db->errorInfo());	
 	
-		$result = $req->fetch(PDO::FETCH_ASSOC);
+		$result = $req->fetch(PDO::FETCH_OBJ);
 		return $result;
 	}
 	public function execute($queryString,$cond)

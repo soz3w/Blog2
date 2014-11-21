@@ -1,0 +1,9 @@
+<?php
+$post = new Model_Post();
+
+$posts=$post->getPosts($position,$item_per_page);
+foreach ($posts as $k=>$p) {
+    echo "<article><h4 class='title'>".$p["title"]."---".$p["id"]."</h2>".
+          "<p class='content'>".$p["content"]."</p>".
+          "<p class='created'>".$p["created"]."</p></article>";
+}
