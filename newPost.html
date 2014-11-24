@@ -1,0 +1,55 @@
+<html>
+  <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Blog Mordu du foot</title>
+    <style type="text/css">
+       body {
+              padding-top: 50px;
+              background-color:#DDD;
+            }
+      [class*="col-"], footer {
+              background-color:rgba(10, 200, 200, 0.4);
+              border: 1px solid black;
+              border-radius: 6px;
+              line-height: 40px;
+              text-align: center;
+            }     
+     /* Style pour l'exemple*/
+      footer {
+        border: 0;
+      }
+      article.col-sm-6, nav.col-sm-2 {
+        line-height: 60px;
+      }
+      .well {
+        background-color:#CCC;
+        padding: 20px;}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+<form class="well col-lg-6">
+  <legend>New Post</legend>
+    <div class="form-group">
+      <label for="texte">Title : </label>
+      <input id="title" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="textarea">Content : </label>
+      <textarea id="content" type="textarea" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="select">category </label>
+      <select id="select" class="form-control">
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </select>
+    </div>
+    <button>Post</button>
+</form>
+

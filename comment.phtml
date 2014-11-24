@@ -1,0 +1,32 @@
+<div class="well">
+ 
+    <h4>Leave a comment</h4>
+ 
+    <form role="form" class="clearfix">
+ 
+        <div class="col-md-12 form-group">
+            <label class="sr-only" for="content">Comment</label>
+            <textarea class="form-control" id="content" placeholder="Comment"></textarea>
+        </div>
+ 
+        <div class="col-md-12 form-group text-right">
+            <button class="btn btn-info">Submit</button>
+        </div>
+ 
+    </form>                   
+</div>
+
+<ul id="comments" class="comments unstyled">
+    <?php foreach ($comments as $v): ?>    
+        
+        <li class="comment">
+            <div class="clearfix">
+                <h4 class="pull-left" ><?php echo $v["login"] ?></h4>
+                <p class="pull-right"><?php echo $v["created"] ?></p>
+            </div>
+            <p>
+                 <span class="glyphicon glyphicon-flag"></span> <em><?php echo $v["content"] ?></em>
+            </p>
+        </li>
+    <?php endforeach ?>
+</ul>
