@@ -26,7 +26,7 @@ function my_autoload($className)
 
 
 
-$item_per_page=5;
+$item_per_page=6;
 
 
 $page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH);
@@ -44,20 +44,31 @@ $pages = ceil($total_rows/$item_per_page);
 $pagination = '';
 if($pages > 1)
 {
-    $pagination .= '<ul class="paginate">';
+
+    $pagination .= '<ul class="paginate pagination pagination-sm"><li><a href="#">&larr; Previous</a></li>';
     for($i = 1; $i<$pages; $i++)
     {
         $pagination .= '<li><a href="#" onclick="return false;" class="paginate_click" id="'.$i.'-page">'.$i.'</a></li>';
     }
-    $pagination .= '</ul>';
+    $pagination .= '<li ><a href="#">Next &rarr;</a></li></ul>';
 }
+
+
 
 //output results from database
 $posts=$post->getPosts($position,$item_per_page);
 foreach ($posts as $k=>$p) {
-	echo "<article><h4 class='title'>".$p["title"]."---".$p["id"]."</h2>".
-   		  "<p class='content'>".$p["content"]."</p>".
-   		  "<p class='created'>".$p["created"]."</p></article>";
+	echo "<article class='col-sm-6'>
+	       <div class='panel panel-warning'>
+			  <div class='panel-heading'>
+			    <h3 class='panel-title'>".$p["title"]."---".$p["id"]."</h3>
+			  </div>
+			  <div class='panel-body'><p><img src='images/actu.jpg' class='col-sm-3'>".substr($p["content"],0,500)."...</p>
+			  <p class='text-right'><a href='#' onclick='return false;' class='continueReading pull-right' id=".$p["id"].">continue reading...</a></p></div>".
+		   	"<div class='panel-footer'><small><p class='created'><span class='glyphicon glyphicon-time'></span> ".$p["created"].
+		   	"<span class='pull-right'>by ".$p["login"]." <span class='glyphicon glyphicon-user'></span></span></p></small></div>
+		   </div>
+		 </article>";
 }
 
 echo $pagination;

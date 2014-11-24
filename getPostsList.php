@@ -21,30 +21,35 @@ function my_autoload($className)
 }
 
 // checking connection
-
-
-if ( isset($_POST["login"]) && isset($_POST["password"]) ) 
+if (!isset($_SESSION["login"]))
 {
-	$user = new Model_User();
-	$login = $_POST["login"];
-	$password = $_POST["password"];
-	$userOK  = $user->authenf($login,$password);
+	if ( isset($_POST["login"]) && isset($_POST["password"]) ) 
+	 {
+			$user = new Model_User();
+			$login = $_POST["login"];
+			$password = $_POST["password"];
+			$userOK  = $user->authenf($login,$password);
 
-	if ($userOK!=null)
-	{
-		$loginOK = $userOK->login;
-		$_SESSION["login"]=$loginOK;
-	}
-	else
-	{
-		//header('Location:login.php?message=Invalid connection parameters');
-		
-		echo "<script> checkLogin('(Invalid login or password)');</script>";
-		die();
-	}
-	
+			if ($userOK!=null)
+			{
+				$loginOK = $userOK->login;
+				$_SESSION["login"]=$loginOK;
+			}
+			else
+			{
+				echo "<script> checkLogin('(Invalid login or password)');</script>";
+				die();
+			}
+		}
+		else
+		{
+			echo "<script> checkLogin('(Login and password not set)');</script>";
+				die();
+		}
 
 }
+
+
 
 
 

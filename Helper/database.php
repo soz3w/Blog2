@@ -28,12 +28,27 @@ class Helper_database
 		$result = $req->fetchAll(PDO::FETCH_ASSOC);
 		return $result;
 	}
-	public function queryAll($queryString)
+	public function queryAll($queryString,$cond=null)
 	{
 		$req=$this->db->prepare($queryString);
 
-		if (!$req->execute())
-		    	print_r($db->errorInfo());	
+		if (!is_null($cond))
+		{
+			if (!$req->execute($cond))
+			{
+				var_dump($this->db->errorInfo());
+				die();
+			}
+		}
+		else
+		{
+			if (!$req->execute())
+		    {
+		    	var_dump($this->db->errorInfo());
+		    	die();
+		    }
+		}
+			
 	
 		$result = $req->fetchAll(PDO::FETCH_ASSOC);
 		return $result;

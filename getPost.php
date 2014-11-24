@@ -32,6 +32,14 @@ $post = new Model_Post();
 
 $p=$post->getPost($id);
 
-    echo "<div><h4 class='title'>".$p->title."---".$p->id."</h2>".
-          "<p class='content'>".$p->content."</p>".
-          "<p class='created'>".$p->created."</p></div>";
+$keywords=$post->getPostKeywords($id);
+$comments=$post->getPostComments($id);
+$nbcomments=count($comments);
+
+
+include "post.phtml";
+
+if (isset($_SESSION["login"]))
+{
+    include "comment.phtml";
+}

@@ -1,9 +1,36 @@
 <?php
-$post = new Model_Post();
+?>
+<article>
+    <h3 id="title"><?=$p->title."---" .$p->id  ?></h3>
+ 
+    <div class="row">
+        <div class="group1 col-sm-6 col-md-6">
+            <span class="glyphicon glyphicon-folder-open"></span>  <a href="#" id="category"><?=$p->category  ?></a>
+                     <span class="glyphicon glyphicon-bookmark"></span>
+                    <?php 
+                        if (!empty($keywords))
+                            {
+                            foreach ($keywords as $k => $v) {
+                                
+                            echo "<a class='keyword' onclick= 'return false' href='#'>".$v["keyword"]."</a> ";
+                            } 
+                        }
+                        
+                     ?>
+        </div>
+        <div class="group2 col-sm-6 col-md-6">
+                <span class="glyphicon glyphicon-pencil"></span> <a href="getPost.php#comments" id="comment"><?=$nbcomments ?> Comment(s)</a>                             
+                  <span class="glyphicon glyphicon-time"></span><span id="created"></span>                          
+        </div>
+    </div>
+ 
+    <hr>
+ 
+    <img id ="image" src="images/actu.jpg" class="img-responsive">
+ 
+    <br />
+    <p id="content" class="panel-body"><?=$p->content  ?></p>
+ 
+    <hr>
+</article>
 
-$posts=$post->getPosts($position,$item_per_page);
-foreach ($posts as $k=>$p) {
-    echo "<article><h4 class='title'>".$p["title"]."---".$p["id"]."</h2>".
-          "<p class='content'>".$p["content"]."</p>".
-          "<p class='created'>".$p["created"]."</p></article>";
-}

@@ -1,139 +1,185 @@
 <!DOCTYPE html>
-<html lang="fr-FR">
-<head>    
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+  <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="/vendor/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/style.css">
-   <title></title>
-     <style>
-             
-             a:link {
-                color: white;
+    <title>the Blog</title>
+    <style type="text/css">
+       body {
+              padding-top: 50px;
             }
-
-            /* mouse over link */
-            a:hover {
-                color: #FF00FF;
-            }
-
-            /* selected link */
-            
-            .contain{
-                width: 80%;
-                margin-left: 10%;
-                margin-right: 10%;
-            }
-            article{
-                background-color: rgba(200, 200, 200, 0.9);
-                padding-left:10px;
-                padding-top: 10px;
-                -webkit-border-radius: 10px 10px 10px 10px;
-                border-radius: 10px 10px 10px 10px;
-            }
-            .content
-            {
-                height:150px;
-                overflow: auto;
-                background-color: white;
-                width:98%;
-            }
-            
-            h4{
-                font-weight: bold;
-                color:gray;
-                @baseFontSize: 8px;
-            }
-
-            
-            .title{
-                font-weight: bold;
-                color:yellow;
-            }
-             p{
-                @baseFontSize: 8px;
-            }
-           
-            section li{               
-                display: inline-block;
-                list-style: none;
-                padding-right: 3px;
-                margin-right: 1px;
-                width: 20px;
-                text-align: center;
-               
-                line-height: 25px;
-            }
-            .lineMessage{
-                padding-right: 10px;
-            }
-            input[type="text"]{
-                width:30%;
-                height:20px;
-            }
-            input[type="password"]{
-                 width:30%;
-                height:20px;
-            }
-           
-            .paginate_click
-            {
-                padding :5px;
-            }
-            .active{
-                color: red;
-            }  
-            #messageError 
-            {
-                color: red;
-            }         
-        </style>
-</head>
-<body>   
-     <div class="container">
-        <header>
-            <div class="container">
-                <nav class="navbar navbar-default">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a class= "accueil"  onclick="return false;">Accueil</a></li>
-                        <li><a class= "admin"  onclick="return false;">Admin</a></li>
-                        <li><a class= "NewPost"  onclick="return false;">New Post</a></li>
-                        <li><a class= "contact"  onclick="return false;">Contact</a></li>
-                    </ul>
-             </nav>
-            </div>
-        </header>
+      /*[class*="col-"], footer {
+              background-color:rgba(10, 20, 200, 0.1);
+              border: 1px dashed black;
+              border-radius: 6px;
+            } */    
+     /* Style pour l'exemple*/
+      footer {
+        border: 0;
+      }
+      article.col-sm-6, nav.col-sm-2 {
         
-        <div id = "body" class="container">
-            <div class="row">
-                <div class="col-md-8">
-                     <div class="formulaire">
-
-                    </div>
-
-
-                    <section id="display">
-                        
-                    </section>                    
-                </div>
-                <div class="col-md-4">
-                    <div class="aside"> ..
-                        
-                    </div>
-                </div>
-            </div>                
+      }
+      .input-xs {
+        height: 22px;
+        padding: 5px 5px;
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 3px;
+        }
+        .active{
+                color: red;
+            }
+        .panel-body{
+          text-align: justify;
+          text-justify: inter-word;
+        } 
+        .panel-body img{
+          width:100%;
+          margin-bottom: 2px;
+        }
+        .panel-footer{
+          font-size: 1em;
+        } 
+        h2{
+          color : #CCC;
+          background-color: rgba(200, 200, 200, .4);
+          text-align: center;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="row">
+        <div class="col-sm-12 col-lg-12">
+          <h2>Bienvenue sur le blog</h2>
         </div>
-        <footer>
-            <div class="container"> 
-
+      </header>
+     
+      
+           <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+              <ul class="nav navbar-nav">
+                <li class="active"> <a class ="accueil" href="#" onclick="return false;">Home</a> </li>
+                <li> <a class ="admin" href="#" onclick="return false;">Admin</a> </li>
+                <li> <a class ="newpost" href="#" onclick="return false;">New post</a> </li>
+                <li> <a class ="contact" href="#" onclick="return false;">Contact</a> </li>
+              </ul>
+              <form class="navbar-form navbar-right inline-form">
+                <div class="form-group">
+                  <input type="search" class="input-xs form-control" placeholder="Recherche">
+                  <button class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-eye-open"></span> Chercher</button>
+                </div>
+              </form>
             </div>
-        </footer>
+          </nav>
+      
+         <div class="main">
+            <div class="row">
+                <div class="col-sm-1">
+                  
+                </div>
+                
+                <div class="col-sm-3 formulaire">
+                    
+                </div>
+                <div class="col-sm-8">
             
+                </div>
+              
+            </div>
+            <div class="row">
+                <div class="col-sm-1">
+                  
+                </div>
+                
+                <div class="col-sm-10 list">
+                    
+                </div>
+                <div class="col-sm-1">
+            
+                </div>
+              
+            </div>
+             <div class="row">
+                <section class="col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-9">
+                      <div class="row" id="display">
+                        
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="row">
+                        <aside class="col-sm-12">
+                              <div class="panel panel-warning">
+                                  <div class="panel-heading">
+                                    <h3 class="panel-title"><span class="glyphicon glyphicon-pencil"> Latest Posts</h3>
+                                  </div>
+
+                                  <div class="panel-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><a href="">Post1</a></li>
+                                        <li class="list-group-item"><a href="">Post2</a></li>
+                                        <li class="list-group-item"><a href="">Post3</a></li>
+                                        <li class="list-group-item"><a href="">Post4</a></li>
+                                        <li class="list-group-item"><a href="">Post5</a></li>
+                                    </ul>
+                                  </div>
+                              </div>
+                              <div class="panel panel-danger">
+                                  <div class="panel-heading">
+                                    <h3 class="panel-title"><span class="glyphicon glyphicon-folder-open"> Categories</h3>
+                                  </div>
+                                  <div class="panel-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><a href="">categorie1</a></li>
+                                        <li class="list-group-item"><a href="">categorie2</a></li>
+                                        <li class="list-group-item"><a href="">categorie3</a></li>
+                                        <li class="list-group-item"><a href="">Categorie4</a></li>
+                                        <li class="list-group-item"><a href="">Categorie5</a></li>
+                                    </ul>
+                                  </div>
+                              </div>
+                               <div class="panel panel-info">
+                                  <div class="panel-heading">
+                                    <h3 class="panel-title"><span class="glyphicon glyphicon-bookmark"> Tags</h3>
+                                  </div>
+                                  <div class="panel-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><a href="">Tag1</a></li>
+                                        <li class="list-group-item"><a href="">Tag2</a></li>
+                                        <li class="list-group-item"><a href="">Tag3</a></li>
+                                        <li class="list-group-item"><a href="">Tag4</a></li>
+                                        <li class="list-group-item"><a href="">Tag5</a></li>
+                                    </ul>
+                                  </div>
+                              </div>
+                              
+
+                        </aside>
+                       </div>
+                    </div>
+                  </div>
+                </section>
+             </div>   
+         
         
-   </div> 
-    <script src="/vendor/js/jquery-2.1.1.min.js"></script>   
+               
+        
+            </div>
+           <footer>
+              <div class="container">
+                  <hr />
+                  <p class="text-center">Copyright © SOZ 2014. All rights reserved.</p>
+              </div>
+          </footer>
+    </div>
+     <script src="/vendor/js/jquery-2.1.1.min.js"></script>   
     <script src="/vendor/js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
-
-</body>
+  </body>
 </html>

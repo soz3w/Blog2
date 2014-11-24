@@ -10,72 +10,87 @@ $(function(){
 
     	$(".admin").click(function(event){
     									msg="";
-                      $("#display").html("");  
                       checkLogin(msg);
-                      $("nav ul .active").removeClass('active');
+                      $(".navbar-nav .active").removeClass('active');
                       $(this).parent().addClass('active');
     								 }
     				);
 
       $(".accueil").click(function(event){
                       loadHome();
-                      $(".formulaire").html("");   
+                      $(".formulaire").html("");  
+                      $(".list").html(""); 
                       $("nav ul .active").removeClass('active');
                       $(this).parent().addClass('active'); 
                      }
             );
-      
+
+      $(".newpost").click(function(event){
+                      $("#display").html();
+                      $("#display").load("newPost.phtml",{},function(){});
+                      $(".formulaire").html("");  
+                      $(".list").html(""); 
+                      $("nav ul .active").removeClass('active');
+                      $(this).parent().addClass('active'); 
+                     }
+            );
+      $(".contact").click(function(event){
+                      $("#display").html();
+                      $("#display").load("contact.php",{},function(){});
+                      $(".formulaire").html("");  
+                      $(".list").html(""); 
+                      $("nav ul .active").removeClass('active');
+                      $(this).parent().addClass('active'); 
+                     }
+            );
 
 
 
 
+});// end document ready
 
 
-});
 
-
-function setPagination() {
-
-   	  $(".paginate_click").on("click", function (e) {
-       
-       // $("#display").prepend('<div class="loading-indication"><img src="images/ajax-loader.gif" /> Loading...</div>');
-        var linkClicked = $(this).attr("id");
-        var clicked_id = $(this).attr("id").split("-"); //ID of clicked element, split() to get page number.
-        var page_num = parseInt(clicked_id[0]); //clicked_id[0] holds the page number we need 
-        
-        $('.paginate_click').removeClass('active'); //remove any active class
-        
-        
-
-        $("#display").load("getPosts.php", {'page': (page_num-1)}, function(){
-        	setPagination();
-        	$("#"+linkClicked).addClass('active'); //add active class to currently clicked element
-        });
-
-        
-        
-        return false; //prevent going to herf link
-    	}); 
-
-   }
 
 function checkLogin(messageError)
 {
+
   event.preventDefault();
-  $(".formulaire").load("login.php", {}, function(){
+  $(".list").load("login.php", {}, function(){
 
             if (messageError!='')
-              $("#MessageError").html(messageError);
+            {
+              //alert(messageError);
+              $("div.form-group").addClass("has-error");
+              $(".help-block").html(messageError);
+              $("div.alert").show("slow").delay(4000).hide("slow");
+              $(".btnLogin").click(function(event){
 
-          $(".btnLogin").click(function(event){
-                            logVal=$("#idLogin").val();
-                            passVal=$("#idPassword").val();
-                            $(".formulaire").html("");  
-                            $("#display").html("");  
-                            $("#display").load("getPostsList.php", 
-                              {login:logVal,password:passVal}, function(){} );
-                        }
-                      );    
+                                              logVal=$("#idLogin").val();
+                                              passVal=$("#idPassword").val();
+                                              $(".formulaire").html("");
+                                              $("#display").html(""); 
+                                              $(".list").load("getPostsList.php",{login:logVal,password:passVal},function(){});
+
+                                            });
+           
+            }
+            else
+            {
+
+              $(".btnLogin").click(function(event){
+                                logVal=$("#idLogin").val();
+                                passVal=$("#idPassword").val();
+                               // alert($("#display").html());
+                                $(".formulaire").html("");
+                                $("#display").html("");  
+                                $(".list").load("getPostsList.php", 
+                                  {login:logVal,password:passVal}, function(){} );
+                            }
+                          );    
+
+            }
+              
 
     }); 
 }
@@ -88,6 +103,16 @@ function loadHome()
             function() {
                   $("#1-page").addClass('active');
                   setPagination();
+                  $(".continueReading").click(function(event){                     
+                      $("#display").html();
+                      idVal=$(this).attr("id");
+                      $("#display").load("getPost.php",{id:idVal},function(){});
+                      $(".formulaire").html("");  
+                      $(".list").html(""); 
+                      $("nav ul .active").removeClass('active');
+                      $(this).parent().addClass('active'); 
+                     }
+                    );
                 }
             );  
 }
@@ -99,6 +124,31 @@ function loadOnePost(idParam)
             );  
 
 }
+
+function setPagination() {
+
+      $(".paginate_click").on("click", function (e) {
+       
+       // $("#display").prepend('<div class="loading-indication"><img src="images/ajax-loader.gif" /> Loading...</div>');
+        var linkClicked = $(this).attr("id");
+        var clicked_id = $(this).attr("id").split("-"); //ID of clicked element, split() to get page number.
+        var page_num = parseInt(clicked_id[0]); //clicked_id[0] holds the page number we need 
+        
+        $('.paginate_click').removeClass('active'); //remove any active class
+        
+        
+
+        $("#display").load("getPosts.php", {'page': (page_num-1)}, function(){
+          setPagination();
+          $("#"+linkClicked).addClass('active'); //add active class to currently clicked element
+        });
+
+        
+        
+        return false; //prevent going to herf link
+      }); 
+
+   }
 
 /*
 	var bouton = $("#ajout");
