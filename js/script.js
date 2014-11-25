@@ -3,7 +3,9 @@ $(function(){
 
  		loadHome();
 
-    //$(".paginate_click").on( "click",function (e) {
+    
+
+    
    
    
       
@@ -27,7 +29,10 @@ $(function(){
 
       $(".newpost").click(function(event){
                       $("#display").html();
-                      $("#display").load("newPost.phtml",{},function(){});
+                      $("#display").load("newPost.phtml",{},function(){
+                        handleInputFile();
+                        testhandleInputFile();
+                      });
                       $(".formulaire").html("");  
                       $(".list").html(""); 
                       $("nav ul .active").removeClass('active');
@@ -43,6 +48,7 @@ $(function(){
                       $(this).parent().addClass('active'); 
                      }
             );
+      
 
 
 
@@ -106,7 +112,17 @@ function loadHome()
                   $(".continueReading").click(function(event){                     
                       $("#display").html();
                       idVal=$(this).attr("id");
-                      $("#display").load("getPost.php",{id:idVal},function(){});
+                      $("#display").load("getPost.php",{id:idVal},function(){
+                             $("#btnComment").click(function(event){
+                                      var cmt = $("#contentComment").val();
+                                       myAjax("addComment.php",{post_id:idVal,content:cmt},
+                                        "POST","getPost.php",idVal,"#display");
+                                      
+                                      
+                                     }
+                                );
+
+                      });
                       $(".formulaire").html("");  
                       $(".list").html(""); 
                       $("nav ul .active").removeClass('active');
@@ -116,13 +132,43 @@ function loadHome()
                 }
             );  
 }
-function loadOnePost(idParam)
-{ 
-  $("#display").load("getPost.php", 
-            {id: idParam}, 
-            function() {}
-            );  
 
+
+
+
+function myAjax(url,data,type,urlsuccess,idsuccess,htmlElement){
+
+  $(htmlElement).html();
+  $.ajax({
+            url      : url,
+            data     : data,
+            cache    : false,
+            type: type,
+            error    : function(request, error) { // Info Debuggage si erreur         
+                         if (request.responseText!="")
+                            alert("Erreur : responseText: "+request.responseText);
+                       },
+            success  : function(data) { 
+
+              if (urlsuccess !="" && idsuccess!=0)
+              {
+               
+                $(htmlElement).load(urlsuccess,{id:idsuccess},function(){
+
+                    $("#btnComment").click(function(event){
+                                      
+                                      var cmt = $("#contentComment").val();
+                                      myAjax(url,{post_id:idVal,content:cmt},
+                                        "POST",urlsuccess,idVal,htmlElement);
+                                      
+                                      
+                                     }
+                                );
+                });
+              }
+
+            }
+       });    
 }
 
 function setPagination() {
@@ -130,17 +176,38 @@ function setPagination() {
       $(".paginate_click").on("click", function (e) {
        
        // $("#display").prepend('<div class="loading-indication"><img src="images/ajax-loader.gif" /> Loading...</div>');
-        var linkClicked = $(this).attr("id");
-        var clicked_id = $(this).attr("id").split("-"); //ID of clicked element, split() to get page number.
-        var page_num = parseInt(clicked_id[0]); //clicked_id[0] holds the page number we need 
         
-        $('.paginate_click').removeClass('active'); //remove any active class
+        var clicked_id = $(this).attr("id").split("-"); 
+        var page_num = parseInt(clicked_id[0]); 
+        
+        $('.paginate_click').parent().removeClass('active'); //remove any active class
         
         
 
         $("#display").load("getPosts.php", {'page': (page_num-1)}, function(){
           setPagination();
-          $("#"+linkClicked).addClass('active'); //add active class to currently clicked element
+          $('#li-'+page_num).addClass('active');
+            $(".continueReading").click(function(event){                     
+                      $("#display").html();
+                      idVal=$(this).attr("id");
+                      $("#display").load("getPost.php",{id:idVal},function(){
+                             $("#btnComment").click(function(event){
+                                      var cmt = $("#contentComment").val();
+                                       myAjax("addComment.php",{post_id:idVal,content:cmt},
+                                        "POST","getPost.php",idVal,"#display");
+                                      
+                                      
+                                     }
+                                );
+
+                      });
+                      $(".formulaire").html("");  
+                      $(".list").html(""); 
+                      $("nav ul .active").removeClass('active');
+                      $(this).parent().addClass('active'); 
+                     }
+                    );
+        
         });
 
         
@@ -148,7 +215,25 @@ function setPagination() {
         return false; //prevent going to herf link
       }); 
 
-   }
+}
+function handleInputFile()
+{
+  $(document).on('change', '.btn-file :file', function() {
+    var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [numFiles, label]);
+    });
+}
+function testhandleInputFile()
+{
+  $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+        console.log(numFiles);
+        console.log(label);
+    });
+}
+
+
 
 /*
 	var bouton = $("#ajout");

@@ -32,8 +32,8 @@ if (!isset($_SESSION["login"]))
 
 			if ($userOK!=null)
 			{
-				$loginOK = $userOK->login;
-				$_SESSION["login"]=$loginOK;
+				$_SESSION["login"]=$userOK->login;
+				$_SESSION["user_Id"]=$userOK->id;
 			}
 			else
 			{

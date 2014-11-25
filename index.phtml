@@ -3,6 +3,7 @@
   <head>
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/vendor/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -30,9 +31,7 @@
         line-height: 1.5;
         border-radius: 3px;
         }
-        .active{
-                color: red;
-            }
+        
         .panel-body{
           text-align: justify;
           text-justify: inter-word;
@@ -44,10 +43,36 @@
         .panel-footer{
           font-size: 1em;
         } 
+        .form-group{
+           padding-bottom: 10px;
+        }
         h2{
           color : #CCC;
           background-color: rgba(200, 200, 200, .4);
           text-align: center;
+        }
+        h3
+        {
+          text-align: center;
+        }
+       .btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
         }
     </style>
   </head>
@@ -55,7 +80,7 @@
     <div class="container">
       <header class="row">
         <div class="col-sm-12 col-lg-12">
-          <h2>Bienvenue sur le blog</h2>
+          <h2 class="lead">Bienvenue sur le blog</h2>
         </div>
       </header>
      

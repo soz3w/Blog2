@@ -1,26 +1,32 @@
 <?php
 ?>
 <article>
-    <h3 id="title"><?=$p->title."---" .$p->id  ?></h3>
+    <h3 class="title" id="title_<?=$p->id?>"><?=$p->title."---" .$p->id  ?></h3>
  
     <div class="row">
         <div class="group1 col-sm-6 col-md-6">
-            <span class="glyphicon glyphicon-folder-open"></span>  <a href="#" id="category"><?=$p->category  ?></a>
-                     <span class="glyphicon glyphicon-bookmark"></span>
-                    <?php 
-                        if (!empty($keywords))
-                            {
-                            foreach ($keywords as $k => $v) {
-                                
-                            echo "<a class='keyword' onclick= 'return false' href='#'>".$v["keyword"]."</a> ";
-                            } 
-                        }
-                        
-                     ?>
+            <small>
+                <span class="glyphicon glyphicon-folder-open"></span>  <a href="#" id="category"><?=$p->category  ?></a>
+                         <span class="glyphicon glyphicon-bookmark"></span>
+                        <?php 
+                            if (!empty($keywords))
+                                {
+                                foreach ($keywords as $k => $v) {
+                                    
+                                echo "<a class='keyword' onclick= 'return false' href='#'>".$v["keyword"]."</a> ";
+                                } 
+                            }
+                            
+                         ?>
+                </small>
         </div>
         <div class="group2 col-sm-6 col-md-6">
-                <span class="glyphicon glyphicon-pencil"></span> <a href="getPost.php#comments" id="comment"><?=$nbcomments ?> Comment(s)</a>                             
-                  <span class="glyphicon glyphicon-time"></span><span id="created"></span>                          
+            <small>
+                <span class="glyphicon glyphicon-pencil"></span> <a href="getPost.php#comments" id="comment"><?=$nbcomments ?> Comment(s) </a>                             
+                  <span></span>&nbsp; <span class="glyphicon glyphicon-time"></span> <a class="badge" href="#" id="category"><?=$p->created  ?></a>     
+                
+            </small>
+                                     
         </div>
     </div>
  

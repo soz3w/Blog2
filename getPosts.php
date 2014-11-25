@@ -48,7 +48,12 @@ if($pages > 1)
     $pagination .= '<ul class="paginate pagination pagination-sm"><li><a href="#">&larr; Previous</a></li>';
     for($i = 1; $i<$pages; $i++)
     {
-        $pagination .= '<li><a href="#" onclick="return false;" class="paginate_click" id="'.$i.'-page">'.$i.'</a></li>';
+           if ($i==$page_number+1)    	
+        		$pagination .= '<li class=active id='.$i.'-li><a href="#" onclick="return false;" class="paginate_click" id="'.$i.'-page">'.$i.'</a></li>';
+        	else
+        		$pagination .= '<li id='.$i.'-li><a href="#" onclick="return false;" class="paginate_click" id="'.$i.'-page">'.$i.'</a></li>';
+       
+
     }
     $pagination .= '<li ><a href="#">Next &rarr;</a></li></ul>';
 }
