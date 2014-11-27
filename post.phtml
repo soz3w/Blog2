@@ -23,16 +23,16 @@
         <div class="group2 col-sm-6 col-md-6">
             <small>
                 <span class="glyphicon glyphicon-pencil"></span> <a href="getPost.php#comments" id="comment"><?=$nbcomments ?> Comment(s) </a>                             
-                  <span></span>&nbsp; <span class="glyphicon glyphicon-time"></span> <a class="badge" href="#" id="category"><?=$p->created  ?></a>     
-                
+                  <span></span>&nbsp; <span class="glyphicon glyphicon-time"></span> <a class="badge" href="#" id="category"><?=$p->created  ?></a> 
             </small>
                                      
         </div>
     </div>
  
     <hr>
- 
-    <img id ="image" src="images/actu.jpg" class="img-responsive">
+    <div class="col-sm-12 col-md-12">
+        <img id ="image" src="images/actu.jpg" class="img-responsive img-rounded">
+    </div>
  
     <br />
     <p id="content" class="panel-body"><?=$p->content  ?></p>

@@ -7,7 +7,7 @@ $(function(){
 
     
    
-   
+    
       
 
     	$(".admin").click(function(event){
@@ -30,8 +30,9 @@ $(function(){
       $(".newpost").click(function(event){
                       $("#display").html();
                       $("#display").load("newPost.phtml",{},function(){
-                        handleInputFile();
-                        testhandleInputFile();
+                      //  handleInputFile();
+                        setFileLabel("#labelImage");
+                        tinymce.init({selector:'textarea'});
                       });
                       $(".formulaire").html("");  
                       $(".list").html(""); 
@@ -61,7 +62,7 @@ $(function(){
 function checkLogin(messageError)
 {
 
-  event.preventDefault();
+ 
   $(".list").load("login.php", {}, function(){
 
             if (messageError!='')
@@ -219,17 +220,28 @@ function setPagination() {
 function handleInputFile()
 {
   $(document).on('change', '.btn-file :file', function() {
+    console.log($(this));
     var input = $(this),
         numFiles = input.get(0).files ? input.get(0).files.length : 1,
         label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
     input.trigger('fileselect', [numFiles, label]);
     });
 }
-function testhandleInputFile()
+function setFileLabel(inputLabel)
 {
+  $(document).on('change', '.btn-file :file', function() {
+    console.log($(this));
+    var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [numFiles, label]);
+    });
+
   $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
-        console.log(numFiles);
-        console.log(label);
+        var input = $(this);
+       // console.log(numFiles);
+       // console.log(label);
+        $(inputLabel).val(label);
     });
 }
 

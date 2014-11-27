@@ -4,13 +4,23 @@ class Helper_database
 	private $db;
 	public function __construct()
 	{
-		$config= new Helper_config();
-		$config->loadFile("config.ini");
-		$user = $config->get("dbuser","database");
-		$password = $config->get("dbpassword","database");
-		$dns = $config->get("dbdns","database");
-		$this->db = new PDO($dns,$user,$password);
-		$this->db->exec("SET NAMES UTF8");
+		
+		try
+		{
+			$config= new Helper_config();
+			$config->loadFile("config.ini");
+			$user = $config->get("dbuser","database");
+			$password = $config->get("dbpassword","database");
+			$dns = $config->get("dbdns","database");
+			$this->db = new PDO($dns,$user,$password);			
+			$this->db->exec("SET NAMES UTF8");
+			$this->db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+		}
+		catch(PDOExecption $e) {         
+        		print "Error!: " . $e->getMessage() . "</br>"; 
+        		die();
+    	} 
+		
 
 	}
 	public function query($queryString)

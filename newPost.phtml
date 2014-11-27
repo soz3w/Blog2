@@ -1,5 +1,5 @@
- <h3>New Post</h3>
-<form class="row well col-sm-12 container" enctype="multipart/form-data">
+ <h4>New Post</h4>
+<form class="well col-sm-offset-1 col-sm-11" enctype="multipart/form-data">
     <div class="row form-group">
       <label class="control-label col-sm-4" for="title">Title : </label>
       <div class="col-sm-8">
@@ -30,24 +30,30 @@
        <div class="form-group">
         <label class="control-label col-sm-4" for="keywords">keywords</label>
          <div class="col-sm-8">
-            <input class="form-control" id="keywords" type="text" class="form-control">
+            <input class="form-control" id="keywords" type="text">
          </div>
       </div>
      </div>
-    <fieldset >
+    
     <div class="row form-group"> 
       <div class="form-group">
-        <label class="control-label col-sm-4" for="keywords">
-          <span class="btn btn-default btn-file">
-            Browse <input type="file">
+        
+          <span class="btn btn-sm btn-success btn-file col-sm-offset-2 col-sm-2">
+            Add image... <input type="file">
            </span>
-        </label>
+        
          <div class="col-sm-8">
-            <input class="form-control" id="keywords" type="text" class="form-control">
+            <input class="form-control" id="labelImage" type="text" readonly>
          </div>
+       </div>
     </div>
-    <button id= "btnPost" onclick="return false">Post</button>
-  </fieldset>
+    <div class="form-group">
+            <div class="col-sm-12 text-right">
+                <button id="btnPost" class="btn btn-sm btn-danger">Post</button>
+            </div>
+    </div>
+   
+  
  
 </form>
 

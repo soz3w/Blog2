@@ -74,6 +74,9 @@
             cursor: inherit;
             display: block;
         }
+        .panel-heading:nth-child(n+2){
+          margin-top: 5px;
+        }
     </style>
   </head>
   <body>
@@ -92,6 +95,17 @@
                 <li> <a class ="admin" href="#" onclick="return false;">Admin</a> </li>
                 <li> <a class ="newpost" href="#" onclick="return false;">New post</a> </li>
                 <li> <a class ="contact" href="#" onclick="return false;">Contact</a> </li>
+                <li class="dropdown"> <a data-toggle="dropdown" class ="others" href="#" onclick="return false;">
+                                        Others...<b class="caret"></b>
+                                      </a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Functionality 1</a></li>
+                      <li><a href="#">Functionality 2</a></li>
+                      <li><a href="#">Functionality 3</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">...</a></li>
+                    </ul></a> 
+                </li>
               </ul>
               <form class="navbar-form navbar-right inline-form">
                 <div class="form-group">
@@ -139,48 +153,51 @@
                     </div>
                     <div class="col-sm-3">
                       <div class="row">
-                        <aside class="col-sm-12">
-                              <div class="panel panel-warning">
+                        <aside class="col-sm-12" id="myCollapse">
+                              <div class="panel panel-success">
                                   <div class="panel-heading">
-                                    <h3 class="panel-title"><span class="glyphicon glyphicon-pencil"> Latest Posts</h3>
+                                    <a href="#item1" data-parent="#myCollapse" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-pencil"></span> Latest Posts </a> 
                                   </div>
-
-                                  <div class="panel-body">
-                                    <ul class="list-group">
-                                        <li class="list-group-item"><a href="">Post1</a></li>
-                                        <li class="list-group-item"><a href="">Post2</a></li>
-                                        <li class="list-group-item"><a href="">Post3</a></li>
-                                        <li class="list-group-item"><a href="">Post4</a></li>
-                                        <li class="list-group-item"><a href="">Post5</a></li>
-                                    </ul>
-                                  </div>
-                              </div>
-                              <div class="panel panel-danger">
+                                  <div id="item1" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                      <ul class="list-group">
+                                          <li class="list-group-item"><a href="">Post1</a></li>
+                                          <li class="list-group-item"><a href="">Post2</a></li>
+                                          <li class="list-group-item"><a href="">Post3</a></li>
+                                          <li class="list-group-item"><a href="">Post4</a></li>
+                                          <li class="list-group-item"><a href="">Post5</a></li>
+                                      </ul>
+                                    </div>
+                                  </div> 
                                   <div class="panel-heading">
-                                    <h3 class="panel-title"><span class="glyphicon glyphicon-folder-open"> Categories</h3>
+                                    <a href="#item2"  data-parent="#myCollapse" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-folder-open"></span> Categories</a>
                                   </div>
-                                  <div class="panel-body">
-                                    <ul class="list-group">
-                                        <li class="list-group-item"><a href="">categorie1</a></li>
-                                        <li class="list-group-item"><a href="">categorie2</a></li>
-                                        <li class="list-group-item"><a href="">categorie3</a></li>
-                                        <li class="list-group-item"><a href="">Categorie4</a></li>
-                                        <li class="list-group-item"><a href="">Categorie5</a></li>
-                                    </ul>
+                                  <div id="item2" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                      <ul class="list-group">
+                                          <li class="list-group-item"><a href="">categorie1</a></li>
+                                          <li class="list-group-item"><a href="">categorie2</a></li>
+                                          <li class="list-group-item"><a href="">categorie3</a></li>
+                                          <li class="list-group-item"><a href="">Categorie4</a></li>
+                                          <li class="list-group-item"><a href="">Categorie5</a></li>
+                                      </ul>
+                                     </div>
                                   </div>
-                              </div>
-                               <div class="panel panel-info">
+                              
+                               
                                   <div class="panel-heading">
-                                    <h3 class="panel-title"><span class="glyphicon glyphicon-bookmark"> Tags</h3>
+                                    <a href="#item3" data-parent="#myCollapse" class="panel-title" data-toggle="collapse"><span class="glyphicon glyphicon-bookmark"></span> Tags</a>
                                   </div>
-                                  <div class="panel-body">
-                                    <ul class="list-group">
-                                        <li class="list-group-item"><a href="">Tag1</a></li>
-                                        <li class="list-group-item"><a href="">Tag2</a></li>
-                                        <li class="list-group-item"><a href="">Tag3</a></li>
-                                        <li class="list-group-item"><a href="">Tag4</a></li>
-                                        <li class="list-group-item"><a href="">Tag5</a></li>
-                                    </ul>
+                                  <div id="item3" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                      <ul class="list-group">
+                                          <li class="list-group-item"><a href="">Tag1</a></li>
+                                          <li class="list-group-item"><a href="">Tag2</a></li>
+                                          <li class="list-group-item"><a href="">Tag3</a></li>
+                                          <li class="list-group-item"><a href="">Tag4</a></li>
+                                          <li class="list-group-item"><a href="">Tag5</a></li>
+                                      </ul>
+                                    </div>
                                   </div>
                               </div>
                               
@@ -205,6 +222,7 @@
     </div>
      <script src="/vendor/js/jquery-2.1.1.min.js"></script>   
     <script src="/vendor/js/bootstrap.min.js"></script>
+    <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

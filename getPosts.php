@@ -55,7 +55,8 @@ if($pages > 1)
        
 
     }
-    $pagination .= '<li ><a href="#">Next &rarr;</a></li></ul>';
+    $j=$i+1;
+    $pagination .= '<li id='.$j.'-linext><a href="#" onclick="return false;" class="paginate_click" id="'.$j.'-page">'.$j.'</a></li></ul>';
 }
 
 
@@ -68,7 +69,7 @@ foreach ($posts as $k=>$p) {
 			  <div class='panel-heading'>
 			    <h3 class='panel-title'>".$p["title"]."---".$p["id"]."</h3>
 			  </div>
-			  <div class='panel-body'><p><img src='images/actu.jpg' class='col-sm-3'>".substr($p["content"],0,500)."...</p>
+			  <div class='panel-body'><p><img class='img-thumbnail' src='images/actu.jpg' class='col-sm-3'>".substr($p["content"],0,500)."...</p>
 			  <p class='text-right'><a href='#' onclick='return false;' class='continueReading pull-right' id=".$p["id"].">continue reading...</a></p></div>".
 		   	"<div class='panel-footer'><small><p class='created'><span class='glyphicon glyphicon-time'></span> ".$p["created"].
 		   	"<span class='pull-right'>by ".$p["login"]." <span class='glyphicon glyphicon-user'></span></span></p></small></div>
