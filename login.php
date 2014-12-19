@@ -1,12 +1,7 @@
 <?php 
 session_start();
-
-//session_destroy();
-//
 if (isset($_SESSION["login"]))
 {
- // var_dump($_SESSION);
-  //die();
    header('location:getPostsList.php');
 }
    
